@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Base styles that toggle based on system preference */
+        body { margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Light Mode Default */
+        body { background-color: #ffffff; color: #1e293b; }
+        /* Dark Mode Override */
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #000000; color: #cbd5e1; }
+        }
+
+        canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
+        
+        /* Nebula Glow - Adapts color based on mode */
+        .nebula {
+            position: fixed; top: 50%; left: 50%; width: 60vw; height: 60vw;
+            transform: translate(-50%, -50%); z-index: -1; filter: blur(100px); pointer-events: none;
+        }
+        @media (prefers-color-scheme: dark) {
+            .nebula { background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%); }
+        }
+        @media (prefers-color-scheme: light) {
+            .nebula { background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); }
+        }
+
+        /* Glitch Animation */
+        .glitch:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Custom Glass Card for both modes */
+        .glass-card {
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500/30">
+
+    <canvas id="space-bg"></canvas>
+    <div class="nebula"></div>
+
+    <nav class="fixed w-full z-50 p-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="group cursor-crosshair">
+                <div class="font-mono tracking-tighter text-xs text-slate-500 dark:text-cyan-500 uppercase">
+                    Status: <span class="text-slate-900 dark:text-white group-hover:text-cyan-500 transition">Online</span>
+                </div>
+                <div class="h-[1px] w-0 group-hover:w-full bg-cyan-500 transition-all duration-500"></div>
+            </div>
+            <div class="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em]">
+                <a href="#about" class="hover:text-cyan-500 transition-colors">About</a>
+                <a href="#experience" class="hover:text-cyan-500 transition-colors">Log</a>
+                <a href="#projects" class="hover:text-cyan-500 transition-colors">Work</a>
+                <a href="#contact" class="px-4 py-1 border border-slate-300 dark:border-cyan-500/50 rounded-full hover:bg-cyan-500 hover:text-white dark:hover:text-black transition-all">Link</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-8">
+        
+        <section id="about" class="min-h-screen flex flex-col justify-center">
+            <div class="reveal">
+                <span class="font-mono text-xs tracking-[0.5em] uppercase mb-4 block text-slate-400 dark:text-cyan-500">System Handshake... Complete</span>
+                <h1 class="text-7xl md:text-9xl font-black tracking-tighter glitch cursor-default transition-colors text-slate-900 dark:text-white">
+                    YOUR NAME<span class="text-cyan-500">.</span>
+                </h1>
+                <p class="max-w-xl text-xl leading-relaxed font-light mt-6 border-l-2 border-slate-200 dark:border-cyan-950 pl-6 text-slate-600 dark:text-slate-400">
+                    Full-stack engineer building <span class="text-slate-900 dark:text-white">robust digital vessels</span> for the modern web. Specializing in minimal design and high-velocity performance.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 reveal">
+            <h3 class="text-[10px] font-mono tracking-[0.5em] text-slate-400 dark:text-slate-600 mb-12 uppercase italic">/ Core Technical Stack</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="p-6 glass-card rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                    <div class="text-cyan-600 dark:text-cyan-400 font-bold text-sm">Frontend</div>
+                    <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest">React / Next / TS</div>
+                </div>
+                <div class="p-6 glass-card rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                    <div class="text-cyan-600 dark:text-cyan-400 font-bold text-sm">Backend</div>
+                    <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest">Node / Go / Python</div>
+                </div>
+                <div class="p-6 glass-card rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                    <div class="text-cyan-600 dark:text-cyan-400 font-bold text-sm">Database</div>
+                    <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest">Postgres / Redis</div>
+                </div>
+                <div class="p-6 glass-card rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                    <div class="text-cyan-600 dark:text-cyan-400 font-bold text-sm">Design</div>
+                    <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest">Figma / Tailwind</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 reveal">
+            <h3 class="text-[10px] font-mono tracking-[0.5em] text-slate-400 dark:text-slate-600 mb-12 uppercase italic">/ Professional Log</h3>
+            <div class="space-y-4">
+                <div class="glass-card p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between group bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-cyan-500/30">
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-500 transition">Senior Systems Pilot</h4>
+                        <p class="font-mono text-xs uppercase mt-1 tracking-widest text-slate-400">Global Tech Hub // 2021 — 2024</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 font-light text-sm italic md:text-right text-slate-500 dark:text-slate-400">
+                        Refactored legacy engines to <br class="hidden md:block"> boost throughput by 40%.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 reveal">
+            <h3 class="text-[10px] font-mono tracking-[0.5em] text-slate-400 dark:text-slate-600 mb-12 uppercase italic">/ Artifacts</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="#" class="p-8 glass-card rounded-2xl group flex justify-between items-end min-h-[200px] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-500 transition uppercase tracking-widest">Nova Engine</h4>
+                        <p class="text-xs text-slate-500 mt-2 font-light">Custom 3D starfield generator.</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                </a>
+                <a href="#" class="p-8 glass-card rounded-2xl group flex justify-between items-end min-h-[200px] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-500 transition uppercase tracking-widest">Aether Dashboard</h4>
+                        <p class="text-xs text-slate-500 mt-2 font-light">Interstellar data visualization tool.</p>
+                    </div>
+                    <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-all"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32 text-center reveal">
+            <h3 class="text-[10px] font-mono tracking-[1em] text-slate-400 dark:text-cyan-900 mb-16 uppercase">Establish Link</h3>
+            <div class="flex justify-center space-x-12">
+                <a href="#" class="text-slate-400 hover:text-cyan-500 transition-all transform hover:scale-110"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-slate-400 hover:text-cyan-500 transition-all transform hover:scale-110"><i data-lucide="github"></i></a>
+                <a href="#" class="text-slate-400 hover:text-cyan-500 transition-all transform hover:scale-110"><i data-lucide="mail"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center text-[9px] font-mono tracking-[0.5em] text-slate-400 border-t border-slate-100 dark:border-white/5 uppercase">
+        End of Transmission // 2026
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Three.js Logic with color adaptation
+        let scene, camera, renderer, starGeo, stars;
+        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const starColor = isDarkMode ? 0xffffff : 0x64748b; // White in dark, Slate in light
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 1;
+            camera.rotation.x = Math.PI/2;
+
+            renderer = new THREE.WebGLRenderer({canvas: document.getElementById('space-bg'), antialias: true, alpha: true});
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            starGeo = new THREE.BufferGeometry();
+            let positions = [];
+            for(let i=0; i<6000; i++) {
+                positions.push(Math.random() * 600 - 300, Math.random() * 600 - 300, Math.random() * 600 - 300);
+            }
+            starGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            let sprite = new THREE.TextureLoader().load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/sprites/disc.png');
+            let starMaterial = new THREE.PointsMaterial({ color: starColor, size: 0.7, map: sprite, transparent: true, opacity: isDarkMode ? 0.8 : 0.3 });
+            stars = new THREE.Points(starGeo, starMaterial);
+            scene.add(stars);
+            animate();
+        }
+
+        function animate() {
+            const positions = starGeo.attributes.position.array;
+            let scrollSpeed = window.scrollY * 0.003;
+            for (let i = 1; i < positions.length; i += 3) {
+                positions[i] -= (0.1 + scrollSpeed);
+                if (positions[i] < -300) positions[i] = 300;
+            }
+            starGeo.attributes.position.needsUpdate = true;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        init();
+        
+        // Listen for system theme changes to update stars
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            location.reload(); // Simplest way to re-init Three.js with correct colors
+        });
+    </script>
+</body>
+</html>
