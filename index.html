@@ -3,134 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manu Krishna | Portfolio</title>
+    <title>Manu Krishna | Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap');
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
-        .skill-card:hover { transform: translateY(-5px); }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .section-padding { padding: 80px 0; }
+        
+        .contact-input { 
+            border: 1px solid #d1d5db; 
+            border-radius: 8px; 
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+        .contact-input:focus { border-color: #1a1a1a; outline: none; box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05); }
+
+        .glass-card { border: 1px solid #f3f4f6; transition: all 0.3s ease; }
+        .glass-card:hover { border-color: #e5e7eb; transform: translateY(-3px); }
+
+        /* Compact Elongated Logo */
+        .logo-container { display: flex; align-items: baseline; letter-spacing: -0.05em; }
+        .logo-k { font-style: italic; font-weight: 300; margin: 0 -1px; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 selection:bg-cyan-500/30">
+<body class="selection:bg-gray-100">
 
-    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="font-bold tracking-tighter text-xl text-white">MK<span class="text-cyan-500">.</span></span>
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#hero" class="hover:text-cyan-400 transition">About</a>
-                <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
-                <a href="#services" class="hover:text-cyan-400 transition">Services</a>
-                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="logo-container text-xl">
+                <span class="text-[#9ca3af] font-light lowercase">manu</span>
+                <span class="text-[#111827] text-2xl logo-k">K</span>
+                <span class="text-[#4b5563] font-light lowercase italic">rishna</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">
+                <a href="#about" class="hover:text-black transition">About</a>
+                <a href="#projects" class="hover:text-black transition">Works</a>
+                <a href="#skills" class="hover:text-black transition">Skills</a>
+                <a href="#contact" class="hover:text-black transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6">
+    <main class="max-w-5xl mx-auto px-6">
         
-        <section id="hero" class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 pt-20">
-            <div class="flex-1 space-y-6">
-                <h2 class="text-cyan-500 font-mono tracking-widest text-sm uppercase">Full Stack Developer</h2>
-                <h1 class="text-6xl md:text-8xl font-black text-white leading-tight">
-                    Manu <br> Krishna<span class="text-cyan-500">.</span>
+        <section id="about" class="min-h-screen flex flex-col md:flex-row items-center justify-between gap-12 pt-24">
+            <div class="flex-1 order-2 md:order-1">
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-[0.9]">
+                    Manu Krishna
                 </h1>
-                <p class="text-slate-400 text-lg max-w-lg leading-relaxed">
-                    I'm a MERN stack specialist currently mastering modern web architectures at <span class="text-white">Brototype</span>. I build scalable, high-performance digital solutions with a focus on clean code and user-centric design.
+                <p class="text-lg text-gray-500 leading-relaxed max-w-lg mb-8">
+                    Full-stack engineer building <span class="text-black font-semibold">performant digital products</span>. Currently specializing in MERN stack development at Brototype, Palakkad.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#contact" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-3 rounded-full font-bold transition">Hire Me</a>
-                    <a href="https://github.com/manuk027" class="border border-white/10 hover:bg-white/5 px-8 py-3 rounded-full font-bold transition">View Work</a>
-                </div>
-            </div>
-            <div class="flex-1 flex justify-center">
-                <div class="relative w-64 h-64 md:w-80 md:h-80">
-                    <div class="absolute inset-0 bg-cyan-500 rounded-2xl rotate-6 opacity-20"></div>
-                    <img src="https://via.placeholder.com/400" alt="Manu Krishna" class="relative z-10 w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl">
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="py-24">
-            <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-white mb-4">Technical Arsenal</h3>
-                <div class="h-1 w-20 bg-cyan-500 mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass p-8 rounded-2xl text-center skill-card transition">
-                    <i data-lucide="layers" class="mx-auto mb-4 text-cyan-400"></i>
-                    <h4 class="font-bold text-white">Frontend</h4>
-                    <p class="text-xs text-slate-500 mt-2 uppercase tracking-tighter">React / Next.js / Tailwind</p>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center skill-card transition">
-                    <i data-lucide="server" class="mx-auto mb-4 text-cyan-400"></i>
-                    <h4 class="font-bold text-white">Backend</h4>
-                    <p class="text-xs text-slate-500 mt-2 uppercase tracking-tighter">Node.js / Express</p>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center skill-card transition">
-                    <i data-lucide="database" class="mx-auto mb-4 text-cyan-400"></i>
-                    <h4 class="font-bold text-white">Database</h4>
-                    <p class="text-xs text-slate-500 mt-2 uppercase tracking-tighter">MongoDB / SQL</p>
-                </div>
-                <div class="glass p-8 rounded-2xl text-center skill-card transition">
-                    <i data-lucide="terminal" class="mx-auto mb-4 text-cyan-400"></i>
-                    <h4 class="font-bold text-white">DevOps</h4>
-                    <p class="text-xs text-slate-500 mt-2 uppercase tracking-tighter">Git / Docker / AWS</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="py-24">
-            <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-white mb-4">What I Offer</h3>
-                <p class="text-slate-400">Transforming ideas into digital reality</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-10 border border-white/5 bg-gradient-to-b from-white/5 to-transparent rounded-3xl">
-                    <h4 class="text-xl font-bold text-white mb-4">Web Development</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">End-to-end development of responsive, fast-loading web applications using the MERN stack.</p>
-                </div>
-                <div class="p-10 border border-white/5 bg-gradient-to-b from-white/5 to-transparent rounded-3xl">
-                    <h4 class="text-xl font-bold text-white mb-4">API Design</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Building robust, secure, and well-documented RESTful APIs for your mobile or web projects.</p>
-                </div>
-                <div class="p-10 border border-white/5 bg-gradient-to-b from-white/5 to-transparent rounded-3xl">
-                    <h4 class="text-xl font-bold text-white mb-4">UI/UX Implementation</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed">Translating Figma designs into pixel-perfect, interactive user interfaces with Tailwind CSS.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24">
-            <div class="max-w-3xl mx-auto glass p-8 md:p-12 rounded-3xl">
-                <div class="text-center mb-10">
-                    <h3 class="text-3xl font-bold text-white mb-2">Get In Touch</h3>
-                    <p class="text-slate-400">Have a project in mind? Let's talk.</p>
-                </div>
-                <form action="#" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Your Name" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition">
-                        <input type="email" placeholder="Your Email" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition">
+                
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="#contact" class="bg-black text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-gray-800 transition shadow-sm">Get in touch</a>
+                    <div class="flex items-center gap-5">
+                        <a href="mailto:manu27k11@gmail.com" title="Email" class="text-gray-400 hover:text-red-500 transition-colors">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/27manu" target="_blank" title="LinkedIn" class="text-gray-400 hover:text-[#0077b5] transition-colors">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/manuk027" target="_blank" title="GitHub" class="text-gray-400 hover:text-black transition-colors">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram" class="text-gray-400 hover:text-[#E4405F] transition-colors">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://x.com" target="_blank" title="X (Twitter)" class="text-gray-400 hover:text-black transition-colors">
+                            <i data-lucide="twitter" class="w-6 h-6"></i>
+                        </a>
                     </div>
-                    <textarea rows="5" placeholder="Your Message" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition"></textarea>
-                    <button class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-4 rounded-xl transition">Send Message</button>
+                </div>
+            </div>
+            <div class="flex-1 order-1 md:order-2 flex justify-center md:justify-end">
+                <div class="w-72 h-72 md:w-80 md:h-80 grayscale hover:grayscale-0 transition duration-700">
+                    <img src="./manu.png" alt="Manu Krishna" class="w-full h-full object-cover rounded-2xl border border-gray-100 shadow-sm">
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding border-t border-gray-100">
+            <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-8 italic">/ Featured Work</h2>
+            <div class="max-w-xl">
+                <a href="https://github.com/manuk027/clicknbuild" target="_blank" class="group flex items-center gap-6 glass-card p-5 rounded-2xl">
+                    <div class="w-20 h-14 overflow-hidden rounded-lg bg-gray-50 flex-shrink-0">
+                        <img src="./logo.png" alt="clickNbuild" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-bold group-hover:underline">clickNbuild</h3>
+                        <p class="text-xs text-gray-500">Hardware E-Commerce Platform</p>
+                    </div>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-black transition"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding border-t border-gray-100">
+            <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-12 italic">/ Tech Stack</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-mongodb-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">MongoDB</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-postgresql-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Postgres</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-mysql-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">MySQL</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-react-original colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">React</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-vitejs-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Vite</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-nodejs-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Node.js</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-javascript-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Javascript</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3 text-center">
+                    <i class="devicon-typescript-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest">TypeScript</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-tailwindcss-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Tailwind</span>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex flex-col items-center gap-3">
+                    <i class="devicon-git-plain colored text-3xl"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Git</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding border-t border-gray-100 mb-20">
+            <div class="max-w-2xl">
+                <h2 class="text-4xl font-extrabold mb-8 tracking-tight">Contact.</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" id="name" required placeholder="Name" class="contact-input px-4 py-3 text-sm">
+                        <input type="text" id="role" placeholder="Role" class="contact-input px-4 py-3 text-sm">
+                    </div>
+                    <input type="text" id="org" placeholder="Company / Institution" class="contact-input w-full px-4 py-3 text-sm">
+                    <textarea id="message" required placeholder="Message" rows="4" class="contact-input w-full px-4 py-3 text-sm"></textarea>
+                    <button type="submit" class="bg-black text-white px-10 py-4 rounded-xl font-bold hover:bg-gray-800 transition shadow-sm text-sm">Send Message</button>
                 </form>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-12 text-center border-t border-white/5">
-        <div class="flex justify-center space-x-6 mb-6">
-            <a href="https://linkedin.com/in/27manu" class="text-slate-500 hover:text-white transition"><i data-lucide="linkedin"></i></a>
-            <a href="https://github.com/manuk027" class="text-slate-500 hover:text-white transition"><i data-lucide="github"></i></a>
-            <a href="mailto:manu27k11@gmail.com" class="text-slate-500 hover:text-white transition"><i data-lucide="mail"></i></a>
+    <footer class="py-12 border-t border-gray-50 text-center">
+        <div class="flex justify-center gap-6 mb-4">
+             <a href="mailto:manu27k11@gmail.com" class="text-gray-300 hover:text-black transition"><i data-lucide="mail" class="w-4 h-4"></i></a>
+             <a href="https://linkedin.com/in/27manu" class="text-gray-300 hover:text-black transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+             <a href="https://instagram.com" class="text-gray-300 hover:text-black transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+             <a href="https://x.com" class="text-gray-300 hover:text-black transition"><i data-lucide="twitter" class="w-4 h-4"></i></a>
         </div>
-        <p class="text-[10px] uppercase tracking-widest text-slate-600">© 2026 Manu Krishna. Built with Code.</p>
+        <p class="text-[9px] uppercase tracking-[0.5em] text-gray-300 font-bold">
+            © 2026 Manu Krishna &bull; Palakkad
+        </p>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const role = document.getElementById('role').value;
+            const org = document.getElementById('org').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = encodeURIComponent(`Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nRole: ${role}\nOrg: ${org}\n\nMessage:\n${message}`);
+            window.location.href = `mailto:manu27k11@gmail.com?subject=${subject}&body=${body}`;
+        });
     </script>
 </body>
 </html>
